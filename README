@@ -1,0 +1,24 @@
+## list all files
+curl 0.0.0.0:5000/images
+
+## upload a file
+curl -v -X POST 0.0.0.0:5000/images -F "file=@0009.DCM"
+
+## get a specific file
+curl 0.0.0.0:5000/images/IM000001.dcm --output myfile.dcm
+
+## get a specific file as .png
+curl 0.0.0.0:5000/images/IM000001.dcm?png=true --output myfile.png
+
+## delete a file
+curl -X "DELETE" 0.0.0.0:5000/images/IM000001.dcm
+
+## get all dicom tags on an image
+curl 0.0.0.0:5000/images/IM000001.dcm/tags
+
+## search dicom tags on an image
+curl 0.0.0.0:5000/images/IM000001.dcm/tags?search=0008,0096
+curl 0.0.0.0:5000/images/IM000001.dcm/tags?search=,0096
+curl 0.0.0.0:5000/images/IM000001.dcm/tags?search=0008,
+curl 0.0.0.0:5000/images/IM000001.dcm/tags?search=0008
+

@@ -1,0 +1,150 @@
+openapi: 3.0.0
+info:
+  title: Image API
+  description: API for managing images and their tags
+  version: 1.0.0
+
+tags:
+  - name: images
+    description: Dicom
+
+paths:
+  /images:
+    get:
+      summary: List all image names
+      description: Returns a list of all available image names
+      operationId: listImages
+      tags:
+        - images
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example: ["xray.dcm", "mri.dcm", "scan.dcm"]
+        '500':
+          description: Internal server error
+          
+    post:
+      summary: Add a new image
+      description: Upload a new image to the system
+      operationId: addImage
+      requestBody:
+        content:
+          image/png:
+            schema:
+              type: string
+              format: binary
+      tags:
+        - images
+      responses:
+        '201':
+          description: Image successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  message:
+                    type: string
+                example:
+                  name: "xray.jpg"
+                  message: "Image successfully uploaded"
+        '400':
+          description: Invalid input
+        '409':
+          description: Image with this name already exists
+        '500':
+          description: Internal server error
+
+  /images/{name}:
+    get:
+      summary: Find image by name
+      description: Returns a single image by its name
+      operationId: getImageByName
+      parameters:
+        - name: name
+          in: path
+          description: Name of the image to retrieve
+          required: true
+          schema:
+            type: string
+      tags:
+        - images
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            image/*:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Image not found
+        '500':
+          description: Internal server error
+          
+    delete:
+      summary: Delete image by name
+      description: Deletes an image by its name
+      operationId: deleteImage
+      parameters:
+        - name: name
+          in: path
+          description: Name of the image to delete
+          required: true
+          schema:
+            type: string
+      tags:
+        - images
+      responses:
+        '204':
+          description: Image successfully deleted
+        '404':
+          description: Image not found
+        '500':
+          description: Internal server error
+
+  /images/{name}/tags:
+    get:
+      summary: Get image tags
+      description: Returns all tags associated with an image
+      operationId: getImageTags
+      parameters:
+        - name: name
+          in: path
+          description: Name of the image
+          required: true
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Search query to filter tags
+          required: false
+          schema:
+            type: string
+      tags:
+        - images
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example: []
+        '404':
+          description: Image not found
+        '500':
+          description: Internal server error
+
+components:
+  schemas: {}

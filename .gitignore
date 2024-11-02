@@ -1,0 +1,6 @@
+data/*.dcm
+data/*.png
+.venv/*
+*~
+*.pyc
+*__pycache__*
