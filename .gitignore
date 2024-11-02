@@ -1,6 +1,11 @@
 data/*.dcm
 data/*.png
+public/
+
 .venv/*
-*~
 *.pyc
 *__pycache__*
+
+*~
+
+dicom-viewer/node_modules/*
