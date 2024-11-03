@@ -19,5 +19,7 @@ RUN apt install nodejs npm && \
 
 EXPOSE 5000
 
+WORKDIR /app
+
 # Run application
-CMD [ "flask", "--app", "app/server", "-p", "3000", "run" ]
+CMD [ "flask", "--app", "app/server", "run" ]
