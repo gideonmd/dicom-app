@@ -7,6 +7,8 @@ docker build . -t dicom-app
 docker run -p 3000:5000 dicom-app
 ```
 
+(FYI - It produces a big image.)
+
 ## 2 - Using the API
 
 There are two ways to interact with the API:
