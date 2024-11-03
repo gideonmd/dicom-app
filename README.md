@@ -13,11 +13,11 @@ There are two ways to interact with the API:
 - via curl
 - via the browser UI
 
-### 2.a - Using the browser UI
+## 2.a - Using the browser UI
 
 Browse to `http://localhost:3000/` after running the API server.
 
-### 2.b - Using curl
+## 2.b - Using curl
 #### list all files
 
 ```
