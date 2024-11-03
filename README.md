@@ -58,7 +58,7 @@ curl 0.0.0.0:3000/images/im000001.dcm/tags
 
 ### search dicom tags on an image
 
-- **Caveat: no validation performed on search string. Valid formats are like those listed in the examples below.
+- **Caveat: no validation performed on search string. Valid formats are like those listed in the examples below.**
 
 ```
 curl 0.0.0.0:3000/images/im000001.dcm/tags?search=0008,0096
