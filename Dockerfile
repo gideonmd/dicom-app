@@ -22,4 +22,4 @@ EXPOSE 5000
 WORKDIR /app
 
 # Run application
-CMD [ "flask", "--app", "app/server", "run" ]
+CMD [ "flask", "--app", "app/server", "--host", "0.0.0.0", "run" ]
