@@ -38,17 +38,23 @@ function DicomImage() {
         <h1>
           {imgName}
         </h1>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        PNG Version:
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <img width={250} height={250} src={"/images/" + imgName + "?png=true"} alt={imgName} />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '5%' }}>
-        <h2>Search Tags</h2>
-        <br />
+        <h2>Filter Tags</h2>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Box component="form" sx={{ '& > :not(style)': { m: 1, width: '25ch' } }} noValidate autoComplete="off">
-          <TextField id="standard-basic" label="Standard" variant="standard" onChange={handleSearch} />
-          <Button onClick={searchTags}>Search</Button>
+          <TextField id="standard-basic" label="e.g. 0010, or ,0010" variant="standard" onChange={handleSearch} />
+          <Button onClick={searchTags}>Apply Filter</Button>
         </Box>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '5%' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <TagList tags={tags} />
       </div>
     </>

@@ -18,6 +18,11 @@ const ImageUploader = ({ changeCallback }: { changeCallback: () => void }) => {
 
   return (
     <div>
+      <p>
+        <b>
+          NOTE: file must have .dcm extension. No validation performed on uploaded files.
+        </b>
+      </p>
       <input type="file" name="dicomImage" onChange={
         (event) => setSelectedImage(event.target.files ? event.target.files[0] : null)
       } />

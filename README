@@ -1,3 +1,11 @@
+## Run the API server
+docker build . -t dicom-app
+docker run -p 3000:5000 dicom-app
+
+## Connect to the UI in the browser
+Browse to localhost:3000 after running API server
+
+## API can also be accessed directly via curl
 ## list all files
 curl 0.0.0.0:5000/images
 
