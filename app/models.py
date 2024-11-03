@@ -105,7 +105,7 @@ class DicomDirectory:
         return DicomFile(self, filename)
 
     def add(self, f):
-        filename = secure_filename(f.filename)
+        filename = secure_filename(f.filename).lower()
         f.save(self.fullpath(filename))
 
     def remove(self, filename):

@@ -13,13 +13,17 @@ DATA_CAP = int(os.environ.get('DATA_CAP', 100 * 1024 * 1024))
 DATA_LOC = os.environ.get('DATA_LOC', 'data')
 DATA_DIR = os.path.join(Path(__file__).parent.parent.absolute(), DATA_LOC)
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../public', static_url_path='/')
 app.config['TITLE'] = 'Image API'
 app.config['DESCRIPTION'] = 'API for managing images and their tags'
 app.config['VERSION'] = '1.0.0'
 app.config['UPLOAD_FOLDER'] = DATA_DIR
 app.config['MAX_CONTENT_LENGTH'] = DATA_CAP
 
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 @app.route('/images', methods=['GET'])
 def list_images():
