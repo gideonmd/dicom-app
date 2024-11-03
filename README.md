@@ -1,23 +1,23 @@
 # Instructions
 
-## Run the API server
+## 1 - Run the API server
 
 ```
 docker build . -t dicom-app
 docker run -p 3000:5000 dicom-app
 ```
 
-## Using the app
+## 2 - Using the API
 
-Two ways:
-- curl
-- browser ui
+There are two ways to interact with the API:
+- via curl
+- via the browser UI
 
-### Browser UI
+### Using the browser UI
 
 Browse to `http://localhost:3000/` after running the API server.
 
-### curl
+### Using curl
 #### list all files
 
 ```
