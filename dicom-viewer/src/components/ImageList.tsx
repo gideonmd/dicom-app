@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as React from 'react';
+import { Link } from "react-router-dom";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -13,7 +14,6 @@ type ImageProps = {
   name: string
 }
 
-//function ImageListItem({ img, deleteCallback }: { img: ImageProps, deleteCallback: () => void }) {
 function ImageListItem({ name }: ImageProps, deleteCallback: () => void) {
   const fileDelete = () => {
     axios.delete("images/" + name)
@@ -28,12 +28,12 @@ function ImageListItem({ name }: ImageProps, deleteCallback: () => void) {
         </Avatar>
       </ListItemAvatar>
       <ListItemText primary={name} />
+      <Link to={"/image/" + name}>View</Link>
       <Button sx={{ mx: '5px' }} color="danger" onClick={fileDelete}>Delete</Button>
-    </ListItem>
+    </ListItem >
   )
 }
 
-//export default function ImageList({ items, deleteCallback }: { items: ImageProps[], deleteCallback: () => void }) {
 export default function ImageList({ items, deleteCallback }: { items: ImageProps[], deleteCallback: () => void }) {
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
