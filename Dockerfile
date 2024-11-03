@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.11.10-alpine3.20
+FROM python:3.11.10-bookworm
 
 WORKDIR /app
 
@@ -9,13 +9,13 @@ RUN pip install -r requirements.txt
 
 WORKDIR /app/dicom-viewer
 
-# Installs node, npm, serve, and node packages
-# then builds the app
-RUN apk add --update nodejs npm && \
+RUN apt-get update && \
+ apt-get install -y nodejs npm
+
+RUN apt install nodejs npm && \
+  mkdir /app/public && \
   npm install && \
   npm run build --production
-
-
 
 EXPOSE 5000
 

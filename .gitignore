@@ -1,6 +1,6 @@
 data/*.dcm
 data/*.png
-public/
+/public
 
 .venv/*
 *.pyc
